@@ -78,6 +78,10 @@ body {
     border: 1px solid #000;
 }
 
+.backtotop.js-active {
+    bottom: 108px!important;
+}
+
 @media only screen and (max-width: 992px) {
     .box-body .col-1 {
         width: 60%;
