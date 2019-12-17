@@ -1,0 +1,22 @@
+$('body').append('<style>.upper{text-transform:uppercase}body{margin:0}.box-body h2{margin:0;font-weight:400;font-size:24px;line-height:32px}.box-body p{margin:0;font-weight:700;font-size:14px;line-height:16px}#box{width:100vw;position:fixed;bottom:0;background-color:#fff;z-index:99}.box-body{padding:16px 72px;height:108px;display:flex;justify-content:space-around;box-shadow:28px 15px 20px #000;align-items:center}.box-body .close{position:absolute;right:32px;top:8px;font-size:24px;cursor:pointer;transition:.3s}.box-body .col-1{width:70%}.box-body .col-1 img{margin-right:8px;height:88px}.col-2{width:30%}.box-body .button_adicionar{text-transform:uppercase;color:#fff;background:#000;border:1px solid #000;font-weight:700;text-align:center;padding:16px 72px;float:right;cursor:pointer;transition:.3s}.box-body .button_adicionar:hover{color:#000;background:#fff;border:1px solid #000}@media only screen and (max-width:992px){.box-body .col-1{width:60%}.box-body .col-1 img{height:118px}.box-body .col-2{width:60%}}@media only screen and (max-width:768px){#box{display:none}}</style><div id="box"><div class="box-body"><div class="close">x</div><div class="col-1"> <img src="https://lojaanimale.vteximg.com.br/arquivos/ids/794949-658-987/07203837_5449_1-VESTIDO-DE-COURO-CURTO-BASIC.jpg?v=637076142631100000" alt="" class="imagem-do-produto" srcset="" height="108" align="left"><h2 class="upper produto-nome">Raglan fio tinto listra carol</h2><p> Preço: R$<span class="valor-sem-deconto"></span> <br> Preço com desconto: R$<span class="valor-com-desconto"></span></p></div><div class="col-2"> <button class="button_adicionar upper"> adicionar à sacola</button></div></div></div>');
+var produtoNome = $('.productName').html();
+var produtoValor = $('.skuBestPrice').html();
+var produtoValorSemCifrao = produtoValor.split(' ')[1];
+var produtoValorSemPonto = parseInt(produtoValorSemCifrao.replace('.', ''));
+var produtoValorComDesconto = (produtoValorSemPonto * .9).toFixed(2);
+var produtoImagem = $('.product__image').attr('src');
+$('.produto-nome').html(produtoNome);
+$('.valor-sem-deconto').html(produtoValor);
+$('.valor-com-desconto').html(produtoValorComDesconto.replace('.', ','));
+$('.imagem-do-produto').attr('src', produtoImagem);
+$('.box-body .button_adicionar').click(function(e) {
+    e.preventDefault();
+    $(".button--buy").click();
+});
+$('.box-body .close').click(function(e) {
+    e.preventDefault();
+    $("#box").animate({
+        bottom: "-142px",
+    }, 300, function() {});
+
+});
